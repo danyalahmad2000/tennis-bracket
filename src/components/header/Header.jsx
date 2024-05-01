@@ -89,7 +89,7 @@ const Header = () => {
               <Link to="/login">Log in</Link>
             </div>
             <Link to="/signup">
-              <button className="text-primaryColor font-[500] w-[100px] h-[44px] flex items-center justify-center rounded-[8px] bg-white hover:text-blue-600 mr-[21px]">
+              <button className="text-primaryColor font-[500] w-[100px] h-[44px] flex items-center justify-center rounded-[8px] bg-white hover:text-blue-600">
                 Register
               </button>
             </Link>
