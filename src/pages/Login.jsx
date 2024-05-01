@@ -20,13 +20,13 @@ const Login = () => {
   return (
     <div className="flex min-h-full">
       {/* Left side container */}
-      <div className="w-full h-screen flex justify-end">
-        <img src={loginImg} alt="" className="mr-24" />
+      <div className="w-3/5 h-screen flex justify-end">
+        <img src={loginImg} alt=""/>
       </div>
 
       {/* Right side container */}
-      <div className="w-1/2 flex justify-center items-center px-6 py-12 lg:px-8">
-        <div className="sm:w-full sm:max-w-sm mr-[100px]">
+      <div className="w-2/5 flex justify-center items-center apply_bg">
+        <div className="sm:w-full sm:max-w-sm">
           {/* Logo and Sign in heading */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
@@ -96,7 +96,7 @@ const Login = () => {
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-primaryColor px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
-                  Log in
+                  Log In
                 </button>
               </div>
 

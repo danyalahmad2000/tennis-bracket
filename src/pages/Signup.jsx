@@ -22,13 +22,13 @@ const Signup = () => {
   return (
     <div className="flex min-h-full">
       {/* Left side container */}
-      <div className="w-full h-screen flex justify-end">
-        <img src={signupImg} alt="" className="mr-24" />
+      <div className="w-3/5 h-screen flex justify-end">
+        <img src={signupImg} alt="" />
       </div>
 
       {/* Right side container */}
-      <div className="w-1/2 flex justify-center items-center px-6 py-12 lg:px-8">
-        <div className="sm:w-full sm:max-w-sm mr-[100px]">
+      <div className="w-2/5 flex justify-center items-center lg:py-[54px] apply_bg">
+        <div className="sm:w-full sm:max-w-sm">
           {/* Logo and Sign up heading */}
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img

@@ -3,19 +3,18 @@
 @tailwind utilities;
 
 @layer utilities {
-    .to-warm-gray-100 {
-      --tw-gradient-to: rgb(251, 243, 238);
-    }
-    
-    .from-warm-gray-100 {
-      --tw-gradient-from: rgb(251, 243, 238);
-    }
-    
-    .via-warm-gray-300 {
-      --tw-gradient-stops: var(--tw-gradient-from), rgb(236, 222, 214);
-    }
+  .to-warm-gray-100 {
+    --tw-gradient-to: rgb(251, 243, 238);
   }
-  
+
+  .from-warm-gray-100 {
+    --tw-gradient-from: rgb(251, 243, 238);
+  }
+
+  .via-warm-gray-300 {
+    --tw-gradient-stops: var(--tw-gradient-from), rgb(236, 222, 214);
+  }
+}
 
 @layer base {
   section {
@@ -24,7 +23,6 @@
 }
 
 @layer components {
-
   .container {
     @apply max-w-full w-[1440px] px-5 mx-auto;
   }
@@ -41,22 +39,24 @@
     @apply text-[18px] leading-[30px] font-[400] text-textColor mt-[18px];
   }
 
-  .header{
-        @apply bg-[] bg-no-repeat bg-center bg-cover w-full h-[100px] leading-[100px]
-    }
+  .header {
+    @apply bg-[url('./assets/images/header-gradient.png')] bg-no-repeat bg-center bg-cover w-full h-[333px] px-[32px];
+  }
 
+  .header-reverse {
+    @apply bg-[url('./assets/images/header-gradient-reverse.png')] bg-no-repeat bg-center bg-cover w-full h-[333px] px-[32px];
+  }
   .hero__section {
     @apply bg-[url('./assets/images/hero-bg.png')] bg-no-repeat bg-center bg-cover pb-[55px];
   }
 
   .apply_bg {
-    @apply bg-[url('./assets/images/hero-bg.png')] bg-no-repeat bg-center bg-cover pb-[55px];
+    @apply bg-[#F9F9F9] bg-no-repeat bg-center bg-cover;
   }
 
-  .background_image{
+  .background_image {
     @apply bg-gradient-to-r from-warm-gray-100 via-warm-gray-300 to-warm-gray-100 bg-no-repeat bg-center bg-cover w-full;
   }
-  
 }
 
 @media only screen and (max-width: 1024px) {
