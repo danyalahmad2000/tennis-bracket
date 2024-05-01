@@ -3,14 +3,16 @@ import React from "react";
 const About = () => {
   return (
     <>
-      <div className="lg:w-full md:w-[1440px] h-[670px]">
-        <div className="lg:w-[1700px] mx-auto h-[590px] flex flex-col">
-          <div className="px-[50px] py-[40px] my-auto">
-            <h3 className="text-[18px] font-[400] text-[#444444] mb-[16px]">
+      <div className="lg:w-full md:w-full h-auto lg:h-[670px]">
+        <div className="lg:w-full md:w-[90%] lg:max-w-[1440px] xl:max-w-[1700px] h-auto lg:h-[590px] flex flex-col mx-auto">
+          <div className="px-[20px] py-[40px]">
+            <h3 className="text-[18px] lg:text-[20px] font-[400] text-[#444444] mb-[16px]">
               Event Details
             </h3>
-            <h1 className="text-[32px] font-[500] text-black mb-[32px]">US Open</h1>
-            <p className="text-[16px] font-[400] text[#444444]">
+            <h1 className="text-[32px] lg:text-[40px] font-[500] text-black mb-[32px]">
+              US Open
+            </h1>
+            <p className="text-[16px] lg:text-[18px] font-[400] text-[#444444] mb-[32px]">
               The US Open Tennis Championships, commonly called the US Open, is
               a hardcourt tennis tournament held annually in Queens, New York.
               Since 1987, the US Open has been chronologically the fourth and
@@ -28,8 +30,8 @@ const About = () => {
               COVID-19 pandemic in 2020. All the players participating should be
               at least fourteen (14) years old.
             </p>
-            <br />
-            <p className="text-[16px] font-[400] text[#444444]">
+
+            <p className="text-[16px] lg:text-[18px] font-[400] text-[#444444] mb-[32px]">
               The tournament consists of five primary championships: men's and
               women's singles, men's and women's doubles, and mixed doubles. The
               tournament also includes events for senior, junior, and wheelchair
@@ -42,8 +44,8 @@ const About = () => {
               sponsorships, and television contracts is used to develop tennis
               in the United States.
             </p>
-            <br />
-            <p className="text-[16px] font-[400] text[#444444] mb-[32px]">
+
+            <p className="text-[16px] lg:text-[18px] font-[400] text-[#444444] mb-[32px]">
               This tournament, from 1971 to 2021, employed standard tiebreakers
               (first to seven points, win by two) in every set of a singles
               match.[2] Since 2022, new tiebreak rules were initiated and
@@ -53,7 +55,9 @@ const About = () => {
               by two) is played.
             </p>
 
-            <button className="text-white font-[500] w-[195px] h-[40px] text-[14px] px-[16px] py-[10px] rounded-[8px] bg-primaryColor flex items-center justify-center">Register to Play Brackets</button>
+            <button className="text-white font-[500] w-[100%] lg:w-[210px] h-[40px] lg:h-[45px] text-[14px] lg:text-[16px] px-[16px] py-[10px] lg:px-[20px] lg:py-[12px] rounded-[8px] bg-primaryColor flex items-center justify-center whitespace-nowrap">
+              Register to Play Brackets
+            </button>
           </div>
         </div>
       </div>

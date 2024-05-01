@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaBars } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
 import logo from "../../assets/images/logo.png";
-import headerImg01 from "../../assets/images/headerImg01.png"; // Import your placeholder image
-import headerImg02 from "../../assets/images/headerImg02.png"; // Import your placeholder image
-import headerImg03 from "../../assets/images/headerImg03.png"; // Import your placeholder image
+import headerImg01 from "../../assets/images/headerImg01.png";
+import headerImg02 from "../../assets/images/headerImg02.png";
+import headerImg03 from "../../assets/images/headerImg03.png";
 
 const topNavLinks = [
   {
@@ -39,29 +39,37 @@ const mainNavLinks = [
 
 const Header = () => {
   const [isTournamentsOpen, setIsTournamentsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleTournaments = () => {
     setIsTournamentsOpen(!isTournamentsOpen);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="header-container">
       {/* Top NAV */}
-      <div className="lg:w-full md:w-[1440px] h-[80px] bg-primaryColor flex justify-center items-center">
-        <div className="lg:w-[1700px] md:w-[1280px] h-[46px] mx-[32px] flex flex-row items-center justify-between">
-          <div className="ml-[50px]">
+      <div className="lg:w-full md:w-full h-[80px] bg-primaryColor flex justify-center items-center">
+        <div className="lg:max-w-[1700px] md:w-full h-[46px] mx-4 md:mx-0 flex flex-row items-center justify-between">
+          <div className="mx-10 md:mx-0">
             <img
-              className="h-[46px] w-[111px] object-cover object-center"
+              className="ml-[14px] h-[46px] w-[111px] object-cover object-center"
               src={logo}
               alt="Tennis Bracket Logo"
             />
           </div>
-          <div className="flex flex-row items-center">
+          <div className="flex items-center md:hidden">
+            <FaBars className="text-white text-3xl cursor-pointer" onClick={toggleMenu} />
+          </div>
+          <div className="hidden md:flex flex-row items-center">
             {topNavLinks.map((link, index) => (
               <NavLink
                 key={index}
                 to={link.path}
-                className="flex flex-row text-white mx-4 hover:text-gray-200 relative"
+                className="flex flex-row text-white mx-2 md:mx-4 hover:text-gray-200 relative"
                 activeClassName="text-gray-300"
                 onClick={
                   link.path === "/tournaments" ? toggleTournaments : undefined
@@ -69,42 +77,61 @@ const Header = () => {
               >
                 {link.display}
                 {link.path === "/tournaments" && (
-                  <span className="ml-[12px] mt-1">
+                  <span className="ml-2 md:ml-[12px] mt-1">
                     {isTournamentsOpen ? <FaChevronUp /> : <FaChevronDown />}
                   </span>
                 )}
               </NavLink>
             ))}
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 md:gap-6 mx-5">
             <div className="rounded-[8px] bg-primaryColor text-white font-[500]">
               <Link to="/login">Log in</Link>
             </div>
             <Link to="/signup">
-              <button className="text-primaryColor font-[500] w-[100px] h-[44px] flex items-center justify-center rounded-[8px] bg-white hover:text-blue-600 mr-[50px]">
+              <button className="text-primaryColor font-[500] w-[100px] h-[44px] flex items-center justify-center rounded-[8px] bg-white hover:text-blue-600 mr-[21px]">
                 Register
               </button>
             </Link>
           </div>
         </div>
       </div>
-      {/* Top NAV */}
+      
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-[80px] left-0 w-full bg-primaryColor">
+          <div className="flex flex-col items-center pt-4">
+            {topNavLinks.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.path}
+                className="text-white my-2 hover:text-gray-200"
+                activeClassName="text-gray-300"
+                onClick={
+                  link.path === "/tournaments" ? toggleTournaments : toggleMenu
+                }
+              >
+                {link.display}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      )}
 
-      {/* Main Nav  */}
-      <div className="lg:w-full md:w-[1440px] h-[333px] header pt-[64px]">
-        <div className="lg:w-full md:w-[1440px] h-[269px]">
-          <div className="lg:w-full md:w-[1440px] h-[183px] px-[120px] flex justify-between items-center">
-            {/* Left Content */}
-            <div className="flex flex-col w-[325px] h-[183px]">
-              <div className="w-[325px] h-[91px] mb-[24px]">
-                <h3 className="w-[123px] h-[25px] text-[18px] font-[500] text-textSecondaryColor">
+      {/* Main Nav */}
+      <div className="lg:w-full md:w-[1440px] h-auto header pt-[64px] px-[20px] lg:px-[120px]">
+        <div className="lg:w-full md:w-[1440px]">
+          <div className="lg:w-full md:w-[1440px] flex flex-col lg:flex-row justify-between items-center">
+            <div className="flex flex-col lg:w-[50%]">
+              <div className="mb-[24px]">
+                <h3 className="text-[18px] font-[500] text-textSecondaryColor">
                   July 31st, 2023
                 </h3>
-                <h1 className="w-[325px] h-[66px] text-[48px] font-[700] text-black">
+                <h1 className="text-[48px] font-[700] text-black">
                   US Open 2023
                 </h1>
               </div>
-              <div className="w-[230px] h-[68px] flex items-center mb-[8px]">
+              <div className="flex items-center mb-[8px]">
                 <button className="w-[60px] h-[30px] rounded-[16px] px-[2px] font-[600] bg-[#ECFDF3] text-[#027A48] mr-[24px]">
                   Live
                 </button>
@@ -113,53 +140,46 @@ const Header = () => {
                   New York, USA
                 </p>
               </div>
-              <p className="text-[16px] font-[600] text-textSecondaryColor mb-[24px] tracking-wide  ">
+              <p className="text-[16px] font-[600] text-textSecondaryColor mb-[24px] tracking-wide">
                 Over <span className="text-primaryColor font-[700]">6.5k</span>{" "}
                 have joined already
               </p>
-              {/* Main Navigation Links */}
-              <div className="flex items-center mt-[25px]">
-                {mainNavLinks.map((link, index) => (
-                  <NavLink
-                    key={index}
-                    to={link.path}
-                    className="text-[14px] font-[500] text-textSecondaryColor mr-[32px] hover:text-primaryColor hover:underline hover:underline-offset-[16px]"
-                  >
-                    {link.display}
-                  </NavLink>
-                ))}
-              </div>
-              {/* Main Navigation Links */}
             </div>
-            {/* Left Content */}
-
-            {/* Right Content */}
-            <div className="w-[542px] h-[140px] gap-[16px] flex items-center justify-end">
+            <div className="flex flex-wrap justify-center md:justify-end lg:w-[50%] gap-[16px]">
               <img
                 className="w-[140px] h-[140px] rounded-[16px] object-cover object-center"
-                src={headerImg01} // Use your image source here
+                src={headerImg01}
                 alt="headerImg01"
               />
               <img
                 className="w-[140px] h-[140px] rounded-[16px] object-cover object-center"
-                src={headerImg02} // Use your image source here
+                src={headerImg02}
                 alt="headerImg02"
               />
               <img
                 className="w-[140px] h-[140px] rounded-[16px] object-cover object-center"
-                src={headerImg03} // Use your image source here
+                src={headerImg03}
                 alt="headerImg03"
               />
               <div className="flex justify-center items-center w-[74px] h-[140px] rounded-[16px] bg-[#737373CC]">
                 <div className="text-[22px] font-[700] text-white">+32</div>
               </div>
             </div>
-
-            {/* Right Content */}
+          </div>
+          {/* Main Nav Links */}
+          <div className="lg:w-full md:w-[1440px] mt-8 flex flex-wrap justify-center md:justify-start">
+            {mainNavLinks.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.path}
+                className="text-[14px] font-[500] text-textSecondaryColor mr-[32px] mb-[16px] hover:text-primaryColor hover:underline hover:underline-offset-[16px]"
+              >
+                {link.display}
+              </NavLink>
+            ))}
           </div>
         </div>
       </div>
-      {/* Main Nav */}
     </div>
   );
 };

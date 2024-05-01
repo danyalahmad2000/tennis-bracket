@@ -40,11 +40,11 @@
   }
 
   .header {
-    @apply bg-[url('./assets/images/header-gradient.png')] bg-no-repeat bg-center bg-cover w-full h-[333px] px-[32px];
+    @apply bg-[url('./assets/images/header-gradient.png')] bg-no-repeat bg-center bg-cover;
   }
 
   .header-reverse {
-    @apply bg-[url('./assets/images/header-gradient-reverse.png')] bg-no-repeat bg-center bg-cover w-full h-[333px] px-[32px];
+    @apply bg-[url('./assets/images/header-gradient-reverse.png')] bg-no-repeat bg-center bg-cover;
   }
   .hero__section {
     @apply bg-[url('./assets/images/hero-bg.png')] bg-no-repeat bg-center bg-cover pb-[55px];
@@ -66,6 +66,10 @@
 
   section {
     @apply py-[35px];
+  }
+
+  .top-nav{
+    @apply w-full 
   }
 }
 
