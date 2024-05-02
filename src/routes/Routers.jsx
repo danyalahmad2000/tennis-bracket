@@ -4,6 +4,7 @@ import Home from "../pages/Home"
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import About from '../pages/About';
+import Players from '../pages/Players';
 
 const Routers = () => {
   return (
@@ -13,6 +14,7 @@ const Routers = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/about" element={<About/>} />
+      <Route path="/players" element={<Players/>} />
     </Routes>
   )
 }

@@ -1,8 +1,12 @@
 import React from "react";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
+import CTA from "../components/cta/CTA";
 
 const About = () => {
   return (
     <>
+    <Header/>
       <div className="lg:w-full md:w-full h-auto lg:h-[670px]">
         <div className="lg:w-full md:w-[90%] lg:max-w-[1440px] xl:max-w-[1700px] h-auto lg:h-[590px] flex flex-col mx-auto">
           <div className="px-[20px] py-[40px]">
@@ -61,6 +65,8 @@ const About = () => {
           </div>
         </div>
       </div>
+      <CTA/>
+      <Footer/>
     </>
   );
 };
