@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
-const Player_Details = ({ players }) => {
+const Player_LeaderBoard = ({ players }) => {
   return (
     <>
       {players.map((player, index) => (
@@ -41,4 +41,4 @@ const Player_Details = ({ players }) => {
   );
 };
 
-export default Player_Details;
+export default Player_LeaderBoard;

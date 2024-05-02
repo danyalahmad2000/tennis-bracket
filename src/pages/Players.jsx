@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import CTA from "../components/cta/CTA";
-import Player_Details from "../components/players/player details/Player_Details";
+import Player_LeaderBoard from "../components/players/player details/Player_LeaderBoard";
 import playersData from "../components/players/player details/playersData";
 
 const Players = () => {
@@ -18,7 +18,7 @@ const Players = () => {
             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-300"></div>
           </div>
           <div className="w-[611px] h-[750px] mx-auto my-[8px]">
-            <Player_Details players={playersData}/>
+            <Player_LeaderBoard players={playersData}/>
           </div>
         </div>
       </div>
