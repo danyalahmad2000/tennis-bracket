@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import About from '../pages/About';
 import Players from '../pages/Players';
+import Community from '../pages/Community';
 
 const Routers = () => {
   return (
@@ -15,6 +16,7 @@ const Routers = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/about" element={<About/>} />
       <Route path="/players" element={<Players/>} />
+      <Route path="/community" element={<Community/>} />
     </Routes>
   )
 }
