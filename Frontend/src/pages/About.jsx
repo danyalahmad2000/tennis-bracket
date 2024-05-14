@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -55,10 +55,11 @@ const About = () => {
               fifth for men), an extended tiebreaker (first to ten points, win
               by two) is played.
             </p>
-
-            <button className="text-white font-[500] w-[100%] lg:w-[210px] h-[40px] lg:h-[45px] text-[14px] lg:text-[16px] px-[16px] py-[10px] lg:px-[20px] lg:py-[12px] rounded-[8px] bg-primaryColor flex items-center justify-center whitespace-nowrap">
-              Register to Play Brackets
-            </button>
+            <Link to='/signup'>
+              <button className="text-white font-[500] w-[100%] lg:w-[210px] h-[40px] lg:h-[45px] text-[14px] lg:text-[16px] px-[16px] py-[10px] lg:px-[20px] lg:py-[12px] rounded-[8px] bg-primaryColor flex items-center justify-center whitespace-nowrap">
+                Register to Play Brackets
+              </button>
+            </Link>
           </div>
         </div>
       </div>

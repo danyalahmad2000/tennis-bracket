@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
@@ -12,12 +13,16 @@ const CTA = () => {
           active users play and win exciting prizes.
         </p>
         <div className="flex flex-col lg:flex-row">
-          <button className="text-primaryColor font-[500] w-full lg:w-[100px] h-[44px] lg:h-[44px] flex items-center justify-center rounded-[8px] bg-white hover:text-blue-600 lg:mx-[12px] mb-[12px] lg:mb-0">
-            Log in
-          </button>
-          <button className="text-white font-[500] w-full lg:w-[100px] h-[44px] lg:h-[44px] flex items-center justify-center rounded-[8px] bg-primaryColor">
-            Register
-          </button>
+          <Link to='/login'>
+            <button className="text-primaryColor font-[500] w-full lg:w-[100px] h-[44px] lg:h-[44px] flex items-center justify-center rounded-[8px] bg-white hover:text-blue-600 lg:mx-[12px] mb-[12px] lg:mb-0">
+              Log in
+            </button>
+          </Link>
+          <Link to='/signup'>
+            <button className="text-white font-[500] w-full lg:w-[100px] h-[44px] lg:h-[44px] flex items-center justify-center rounded-[8px] bg-primaryColor">
+              Register
+            </button>
+          </Link>
         </div>
       </div>
     </>

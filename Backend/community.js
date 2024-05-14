@@ -1,4 +1,3 @@
-// server.js
 import express from 'express';
 import pkg from "pg";
 import cors from "cors";
@@ -7,6 +6,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const { Pool } = pkg;
+
+const app = express();
+app.use(cors());
 
 const pool = new Pool({
   user: process.env.DB_USER,
@@ -27,9 +29,6 @@ pool
   });
 
 
-const app = express();
-app.use(cors());
-
 app.get('/community', async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM community_members_data');
@@ -40,7 +39,7 @@ app.get('/community', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
