@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaChevronDown, FaChevronUp, FaBars } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
@@ -40,6 +40,26 @@ const mainNavLinks = [
 const Header = () => {
   const [isTournamentsOpen, setIsTournamentsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [tournamentName, setTournamentName] = useState("");
+
+  // Fetch tournament name asynchronously
+  useEffect(() => {
+    // Your asynchronous data fetching logic here
+    // For example, fetch tournament name from an API
+    const fetchTournamentName = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:20000/fetchTournamentName"
+        );
+        const data = await response.json();
+        setTournamentName(data.tournamentName); // Assuming API response contains tournamentName
+      } catch (error) {
+        console.error("Error fetching tournament name:", error);
+      }
+    };
+
+    fetchTournamentName();
+  }, []);
 
   const toggleTournaments = () => {
     setIsTournamentsOpen(!isTournamentsOpen);
@@ -62,7 +82,10 @@ const Header = () => {
             />
           </div>
           <div className="flex items-center md:hidden">
-            <FaBars className="text-white text-3xl cursor-pointer" onClick={toggleMenu} />
+            <FaBars
+              className="text-white text-3xl cursor-pointer"
+              onClick={toggleMenu}
+            />
           </div>
           <div className="hidden md:flex flex-row items-center">
             {topNavLinks.map((link, index) => (
@@ -96,7 +119,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-[80px] left-0 w-full bg-primaryColor">
@@ -128,7 +151,7 @@ const Header = () => {
                   July 31st, 2023
                 </h3>
                 <h1 className="text-[48px] font-[700] text-black">
-                  US Open 2023
+                  {tournamentName}
                 </h1>
               </div>
               <div className="flex items-center mb-[8px]">
