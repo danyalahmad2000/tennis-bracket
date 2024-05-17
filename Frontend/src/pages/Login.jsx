@@ -1,47 +1,57 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import logo from "../assets/images/logo.jfif";
-import loginImg from "../assets/images/login.png";
-import googleLogo from "../assets/images/google-icon.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/images/logo.jfif';
+import loginImg from '../assets/images/login.png';
+import googleLogo from '../assets/images/google-icon.svg';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Access the history object
+  const [errorMessage, setErrorMessage] = useState(''); // State to handle error messages
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(''); // Reset error message before login attempt
 
     try {
+      console.log('Attempting to log in with:', { email, password });
       const response = await axios.post('http://localhost:7000/login', { email, password });
 
       if (response.status === 200) {
-        // Redirect to the "/play" page on successful login
-        navigate("/about");
+        console.log('Login successful:', response.data);
+
+        // Store the JWT token in local storage
+        localStorage.setItem('token', response.data.token);
+
+        // Redirect to the "/about" page on successful login
+        navigate('/about');
       } else {
-        console.error('Login failed:', response.statusText);
+        console.error('Login failed with status:', response.status);
+        setErrorMessage('Login failed. Please check your credentials and try again.');
       }
     } catch (error) {
       console.error('Error logging in:', error);
+      if (error.response && error.response.data && error.response.data.error) {
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage('An error occurred. Please try again.');
+      }
     }
-  }
+  };
 
   return (
     <div className="flex min-h-full">
       <div className="w-3/5 h-screen flex justify-end">
-        <img src={loginImg} alt=""/>
+        <img src={loginImg} alt="Login" />
       </div>
 
       <div className="w-2/5 flex justify-center items-center apply_bg">
         <div className="sm:w-full sm:max-w-sm">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img
-              className="mx-auto h-10 w-auto"
-              src={logo}
-              alt="Your Company"
-            />
+            <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
             <p className='text-center font-bold'>Tennis Bracket</p>
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               LOGIN
@@ -89,11 +99,17 @@ const Login = () => {
                   />
                 </div>
                 <div className="text-sm text-right m-[6px]">
-                    <a href="#" className="font-semibold text-primaryColor hover:text-blue-600">
-                      Forgot password?
-                    </a>
-                  </div>       
+                  <a href="#" className="font-semibold text-primaryColor hover:text-blue-600">
+                    Forgot password?
+                  </a>
+                </div>
               </div>
+
+              {errorMessage && (
+                <div className="text-red-500 text-center">
+                  {errorMessage}
+                </div>
+              )}
               
               <div>
                 <button
@@ -118,7 +134,7 @@ const Login = () => {
             </form>
 
             <p className="mt-10 text-center text-sm text-gray-500">
-            Don’t have an account yet?{' '}
+              Don’t have an account yet?{' '}
               <Link to="/Signup" className="font-semibold leading-6 text-primaryColor hover:text-blue-600">
                 Sign Up
               </Link>
